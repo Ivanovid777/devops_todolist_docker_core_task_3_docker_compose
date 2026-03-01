@@ -24,20 +24,6 @@ RUN pip install --upgrade pip && \
 
 EXPOSE 8080
 
-## Dockerfile for DB:
-FROM mysql:latest
-
-ENV MYSQL_ROOT_PASSWORD=1234
-ENV MYSQL_DATABASE=app_db
-ENV MYSQL_USER=app_user
-ENV MYSQL_PASSWORD=1234
-
-EXPOSE 3306
-
-VOLUME /var/lib/mysql
-
-ENTRYPOINT ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8080"]
-
 ## Compose file:
 networks:
   todoapp_net:

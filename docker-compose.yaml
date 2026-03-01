@@ -5,12 +5,10 @@ networks:
 services:
   todoapp_db:
     container_name: todoapp_db
-    image: mysql-local:1.0.1
-    build:
-      context: .
-      dockerfile: Dockerfile.mysql
+    image: mysql:8.0
     ports:
-      - "8001:8000"
+      - "8000:8000"
+      - "8000-3306"
     volumes:
       - todoapp_data:/var/lib/mysql
     environment:
